@@ -88,6 +88,7 @@ void setup() {
     Serial.println("Starting LoRa failed!");
     while (1);
   }
+  // LoRa.setSpreadingFactor(8);           // ranges from 6-12,default 7 see API docs
   Serial.println("LoRa Initializing OK!");
   display.setCursor(0,10);
   display.print("LoRa Initializing OK!");

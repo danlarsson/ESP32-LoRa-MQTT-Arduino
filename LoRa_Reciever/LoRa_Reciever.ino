@@ -1,9 +1,17 @@
 /*********
   Original code from Rui Santos  https://RandomNerdTutorials.com/ttgo-lora32-sx1276-arduino-ide/
 
-  x Connect to WiFi
+  * Connect to WiFi
+    - Reconnect if connection lost https://randomnerdtutorials.com/esp32-useful-wi-fi-functions-arduino/#3
+    - Dissconnect to save power? Probably not on the RX
+ 
   - Connect to MQTT
+    ? https://github.com/marvinroger/async-mqtt-client
+    ? https://randomnerdtutorials.com/esp32-mqtt-publish-subscribe-arduino-ide/
+ 
   * Listen for LoRa packet
+    ! BUG! Stops recieves packets
+    
   - Decode packet, ID and Checksum
   - Send sensor data from packet to MQTT
 
@@ -102,6 +110,7 @@ void setup() {
     Serial.println("Starting LoRa failed!");
     while (1);
   }
+  // LoRa.setSpreadingFactor(8);           // ranges from 6-12,default 7 see API docs
   Serial.println("LoRa Initializing OK!");
   display.setCursor(0,10);
   display.println("LoRa Initializing OK!");
